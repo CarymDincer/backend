@@ -2,3 +2,4 @@ Chapters 1.1 and 1.2 added
 Chapters 2.1(Product Perspective) and Chapter 2.3(Data Protection) added
 Chapter 2.5 Limitations and Chapter 3.1 Hardware Interfaces added	
 Chapter 4.2 Multiple Language Choice and 4.3 Voice Assistant added
+Chapter 4.4 Multiple Road Choice 4.4.1 and 4.4.2 added
