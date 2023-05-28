@@ -4,3 +4,4 @@ Chapter 2.5 Limitations and Chapter 3.1 Hardware Interfaces added
 Chapter 4.2 Multiple Language Choice and 4.3 Voice Assistant added
 Chapter 4.4 Multiple Road Choice 4.4.1 and 4.4.2 added
 Chapter 5.1 Interface Quality 5.5.1(Simplicity) and 5.5.2(Understandability) added.
+Chapter 5.3 Sustainability and 5.3.1 Energy Efficiency added. 
