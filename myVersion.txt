@@ -10,7 +10,7 @@ Chapter 5.2 (Performance Requirements) Chapter 6.2 (Use Case Description) added.
 
 Findings 4, 5 and 6 fixed.  
 Findings 11, 12 and 14 fixed. 
-
+Findings 22, 23 and 25 fixed. 
  
 
  
