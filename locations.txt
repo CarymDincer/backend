@@ -6,3 +6,4 @@ Chapter 4.4 Multiple Road Choice 4.4.1 and 4.4.2 added
 Chapter 5.1 Interface Quality 5.5.1(Simplicity) and 5.5.2(Understandability) added.
 Chapter 5.3 Sustainability and 5.3.1 Energy Efficiency added. 
 Chapter 6.1 Use Case Diagramm added.
+Findings 0(typing mistake) 1(typing mistake) 3(lack of information) fixed
