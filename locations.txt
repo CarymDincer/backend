@@ -10,3 +10,4 @@ Findings 0(typing mistake) 1(typing mistake) 3(lack of information) fixed
 Findings 7(lack of information) 9(confliction) 10(lack of information) fixed. 
 Findings 15(unclear information) 19(Typing errors) 20(wrong information) 21(lack of information).
 Findings 26(unnecessary informations) 27(not proper) 29(unclear informartions) fixed.
+Findings 34(exceptions) 36(page number) 38(scrolling options) fixed.
