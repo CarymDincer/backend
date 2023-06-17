@@ -14,4 +14,8 @@ Findings 22, 23 and 25 fixed.
 Findings 31,31 and 33 fixed. 
 Findings 35, 37 and 39 fixed. 
 
+
+Finding 13 added.
+
+
  
