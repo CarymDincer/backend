@@ -1,5 +1,6 @@
 package api.grpc;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -8,10 +9,13 @@ import java.io.IOException;
 @Component
 public class GrpcServer {
 	private Server server;
+	
+	@Autowired
+	private FootballServiceGrpcImpl footballServiceGrpc;
 
     public void start() throws IOException {
         server = ServerBuilder.forPort(8000)
-                .addService(new FootballServiceGrpcImpl())
+                .addService(footballServiceGrpc)
                 .build()
                 .start();
 

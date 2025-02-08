@@ -32,5 +32,69 @@ public class MatchEntity {
 
     @OneToMany(mappedBy = "match", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MatchStatsEntity> matchStats = new ArrayList<>();
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMatchDate() {
+        return matchDate;
+    }
+
+    public void setMatchDate(String matchDate) {
+        this.matchDate = matchDate;
+    }
+
+    public LeagueEntity getLeague() {
+        return league;
+    }
+
+    public void setLeague(LeagueEntity league) {
+        this.league = league;
+    }
+
+    public TeamEntity getHomeTeam() {
+        return homeTeam;
+    }
+
+    public void setHomeTeam(TeamEntity homeTeam) {
+        this.homeTeam = homeTeam;
+    }
+
+    public TeamEntity getAwayTeam() {
+        return awayTeam;
+    }
+
+    public void setAwayTeam(TeamEntity awayTeam) {
+        this.awayTeam = awayTeam;
+    }
+
+    public int getHomeTeamScore() {
+        return homeTeamScore;
+    }
+
+    public void setHomeTeamScore(int homeTeamScore) {
+        this.homeTeamScore = homeTeamScore;
+    }
+
+    public int getAwayTeamScore() {
+        return awayTeamScore;
+    }
+
+    public void setAwayTeamScore(int awayTeamScore) {
+        this.awayTeamScore = awayTeamScore;
+    }
+
+    public List<MatchStatsEntity> getMatchStats() {
+        return matchStats;
+    }
+
+    public void setMatchStats(List<MatchStatsEntity> matchStats) {
+        this.matchStats = matchStats;
+    }
 
 }
