@@ -10,10 +10,21 @@ option java_outer_classname = "FootballServiceProto";
 service FootballService {
     
     rpc ListLeagues (Empty) returns (LeagueListResponse);
-
+    
     rpc ListTeams (LeagueRequest) returns (TeamListResponse);
-
+    rpc CreateTeam (Team) returns (Team);
+    rpc UpdateTeam (Team) returns (Team);
+    rpc DeleteTeam (LeagueRequest) returns (Empty);
+    
+    rpc GetMatchesByLeague (LeagueRequest) returns (MatchListResponse);
+    
     rpc GetMatchStats (MatchStatsRequest) returns (MatchStatsResponse);
+    rpc CreateMatchStats (MatchStats) returns (MatchStats);
+    rpc UpdateMatchStats (MatchStats) returns (MatchStats);
+    
+    rpc GetTeamStats (TeamStatsRequest) returns (TeamStatsResponse);
+    rpc UpdateTeamStats (TeamStats) returns (TeamStats);
+    
 }
 
 
@@ -53,6 +64,18 @@ message MatchStats {
     int32 possession = 8;
     int32 fouls_committed = 9;
 }
+message TeamStats {
+    int64 team_id = 1;
+    int64 league_id = 2;
+    int32 matches_played = 3;
+    int32 wins = 4;
+    int32 draws = 5;
+    int32 losses = 6;
+    int32 goals_scored = 7;
+    int32 goals_conceded = 8;
+    int32 points = 9;
+    int32 goal_difference = 10;
+}
 
 message Empty {}
 
@@ -74,4 +97,16 @@ message MatchStatsRequest {
 
 message MatchStatsResponse {
     repeated MatchStats match_stats = 1;
+}
+
+message TeamStatsRequest {
+    int64 team_id = 1;
+}
+
+message TeamStatsResponse {
+    TeamStats team_stats = 1;
+}
+
+message MatchListResponse {
+    repeated Match matches = 1;
 }

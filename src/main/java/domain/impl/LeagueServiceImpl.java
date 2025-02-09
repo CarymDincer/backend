@@ -28,14 +28,6 @@ public class LeagueServiceImpl implements LeagueService{
         return leagueRepository.findById(id);
     }
 
-    @Override
-    public LeagueEntity updateLeague(Long id, LeagueEntity updatedLeague) {
-        return leagueRepository.findById(id).map(existingLeague -> {
-            existingLeague.setName(updatedLeague.getName());
-            existingLeague.setCountry(updatedLeague.getCountry());
-            return leagueRepository.save(existingLeague);
-        }).orElseThrow(() -> new RuntimeException("League not found!"));
-    }
 
     
 

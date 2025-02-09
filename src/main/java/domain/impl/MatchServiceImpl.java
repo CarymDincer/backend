@@ -28,10 +28,5 @@ public class MatchServiceImpl implements MatchService{
         return matchRepository.findById(id);
     }
 
-    @Override
-    public MatchEntity createMatch(MatchEntity match) {
-        return matchRepository.save(match);
-    }
-
 
 }

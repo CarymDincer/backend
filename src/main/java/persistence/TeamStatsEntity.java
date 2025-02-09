@@ -1,5 +1,7 @@
 package persistence;
 
+import com.behindthegoal.grpc.TeamStats;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -92,5 +94,20 @@ public class TeamStatsEntity {
 	public void setGoalDifference(int goalDifference) {
 		this.goalDifference = goalDifference;
 	}
+	// ✅ gRPC'den gelen TeamStats nesnesini TeamStatsEntity'ye çeviren metot
+    public static TeamStatsEntity fromProto(TeamStats request, TeamEntity team, LeagueEntity league) {
+        TeamStatsEntity entity = new TeamStatsEntity();
+        entity.setTeam(team);
+        entity.setLeague(league);
+        entity.setMatchesPlayed(request.getMatchesPlayed());
+        entity.setWins(request.getWins());
+        entity.setDraws(request.getDraws());
+        entity.setLosses(request.getLosses());
+        entity.setGoalsScored(request.getGoalsScored());
+        entity.setGoalsConceded(request.getGoalsConceded());
+        entity.setPoints(request.getPoints());
+        entity.setGoalDifference(request.getGoalDifference());
+        return entity;
+    }
 
 }

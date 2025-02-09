@@ -8,7 +8,6 @@ public interface MatchService {
 	
 	List<MatchEntity> getMatchesByLeague(Long leagueId);
     Optional<MatchEntity> getMatchById(Long id);
-    MatchEntity createMatch(MatchEntity match);
     
 
 }
