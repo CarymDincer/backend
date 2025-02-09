@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @Service
 public class FootballServiceGrpcImpl extends FootballServiceGrpc.FootballServiceImplBase{
 	@Autowired
-    private TeamService teamService;  // Persistence yerine domain service kullanıyoruz!
+    private TeamService teamService;  // Persistence yerine domain service kullanıyoruz
 
     @Autowired
     private LeagueRepository leagueRepository;
