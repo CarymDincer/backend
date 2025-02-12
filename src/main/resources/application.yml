@@ -1,0 +1,27 @@
+server:
+  port: 8080  
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  h2:
+    console:
+      enabled: true  # H2 Web Konsolunu Aç (http://localhost:8080/h2-console)
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none  # Tabloları otomatik oluşturur, kapatmak için "none" yapabilirsin
+    show-sql: true  # Konsolda SQL çıktısını göster
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true  # Tablo ve sütun isimlerini büyük/küçük harf korumalı yapar
+  sql:
+    init:
+      mode: always  # schema.sql ve data.sql her zaman çalıştırılır
+
+grpc:
+  server:
+    port: 9090  # Eğer gRPC kullanıyorsan, HTTP ile çakışmaması için farklı port seçmelisin

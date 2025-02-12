@@ -5,11 +5,20 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 public class PersistenceConfig {
-	 @Bean
+
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
+        factoryBean.setPersistenceUnitName("leaguePU"); 
+        return factoryBean;
+    }
+	
+	@Bean
+	 
 	    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 	        return new JpaTransactionManager(entityManagerFactory);
 	    }

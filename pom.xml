@@ -22,7 +22,7 @@
         <protobuf.version>4.27.4</protobuf.version>
         <grpc.version>1.66.0</grpc.version>
         <hibernate.version>6.2.0.Final</hibernate.version> 
-        <postgresql.version>42.5.4</postgresql.version> 
+  
     </properties>
 
     <dependencies>
@@ -80,18 +80,34 @@
             <version>${hibernate.version}</version>
         </dependency>
 
-        <!-- ✅ PostgreSQL Driver -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+
 
         <!-- ✅ Spring Boot Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+        </dependency>  
+        <!-- Spring Boot Test Framework -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+    <!-- H2 Database (Test için) -->
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+
+    <!-- gRPC Test -->
+    <dependency>
+        <groupId>io.grpc</groupId>
+        <artifactId>grpc-testing</artifactId>
+          <version>1.66.0</version>
+        <scope>test</scope>
+    </dependency>
     </dependencies>
 
     <build>
@@ -115,34 +131,42 @@
         </execution>
     </executions>
 </plugin>
+<plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <mainClass>com.behindthegoal.Main</mainClass> <!-- ✅ Burada main class'ı belirt -->
+            </configuration>
+        </plugin>
             <!-- Java Compiler Plugin -->
             <plugin>
+            
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
 
             <!-- Protobuf Compiler Plugin -->
             <plugin>
-                <groupId>org.xolstice.maven.plugins</groupId>
-                <artifactId>protobuf-maven-plugin</artifactId>
-                <version>0.6.1</version>
-                <configuration>
-                    <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}</protocArtifact>
-                    <pluginId>grpc-java</pluginId>
-                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
-                    <outputDirectory>${project.build.directory}/generated-sources/protobuf/java</outputDirectory>
-                    <clearOutputDirectory>false</clearOutputDirectory>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>generate-proto-sources</id>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>compile-custom</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                    </execution>
-                </executions>
-            </plugin>
+    <groupId>org.xolstice.maven.plugins</groupId>
+    <artifactId>protobuf-maven-plugin</artifactId>
+    <version>0.6.1</version>
+    <configuration>
+        <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}</protocArtifact>
+        <pluginId>grpc-java</pluginId>
+        <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
+        <outputDirectory>${project.build.directory}/generated-sources/protobuf/java</outputDirectory>
+        <clearOutputDirectory>false</clearOutputDirectory>
+    </configuration>
+    <executions>
+        <execution>
+            <id>generate-proto-sources</id>
+            <goals>
+                <goal>compile</goal>
+                <goal>compile-custom</goal>
+            </goals>
+            <phase>generate-sources</phase>
+        </execution>
+    </executions>
+</plugin>
         </plugins>
     </build>
 </project>

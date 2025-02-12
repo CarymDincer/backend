@@ -1,6 +1,6 @@
-INSERT INTO leagues (league_id, league_name, country) 
+INSERT INTO LEAGUES (league_id, league_name, country) 
 VALUES (1, 'Premier League', 'England');
-INSERT INTO teams (team_id, name, league_id) 
+INSERT INTO TEAMS (team_id, name, league_id) 
 VALUES 
 (8, 'Manchester United', 1),
 (3, 'Liverpool', 1),
@@ -21,7 +21,7 @@ VALUES
 (18, 'Luton Town', 1);
 (19, 'Burnley', 1);
 (20, 'Sheffield United', 1);
-INSERT INTO matches (match_id, match_date, home_team_score, away_team_score, league_id, home_team_id, away_team_id) 
+INSERT INTO MATCHES (match_id, match_date, home_team_score, away_team_score, league_id, home_team_id, away_team_id) 
 VALUES 
 (1, '2023-08-11', 2, 0, 1, 1, 3),  
 (2, '2023-08-12', 2, 0, 1, 1, 3),  

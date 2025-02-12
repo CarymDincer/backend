@@ -14,7 +14,7 @@ public class GrpcServer {
 	private FootballServiceGrpcImpl footballServiceGrpc;
 
     public void start() throws IOException {
-        server = ServerBuilder.forPort(8000)
+        server = ServerBuilder.forPort(8080)
                 .addService(footballServiceGrpc)
                 .build()
                 .start();

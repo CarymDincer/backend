@@ -6,11 +6,8 @@ option java_multiple_files = true;
 option java_package = "com.behindthegoal.grpc";
 option java_outer_classname = "FootballServiceProto";
 
-
 service FootballService {
-    
     rpc ListLeagues (Empty) returns (LeagueListResponse);
-    
     rpc ListTeams (LeagueRequest) returns (TeamListResponse);
     rpc CreateTeam (Team) returns (Team);
     rpc UpdateTeam (Team) returns (Team);
@@ -24,9 +21,9 @@ service FootballService {
     
     rpc GetTeamStats (TeamStatsRequest) returns (TeamStatsResponse);
     rpc UpdateTeamStats (TeamStats) returns (TeamStats);
-    
 }
 
+message Empty {}
 
 message League {
     int64 id = 1;
@@ -34,6 +31,13 @@ message League {
     string country = 3;
 }
 
+message LeagueRequest {
+    int64 league_id = 1;
+}
+
+message LeagueListResponse {
+    repeated League leagues = 1;
+}
 
 message Team {
     int64 id = 1;
@@ -42,6 +46,9 @@ message Team {
     int64 league_id = 4;
 }
 
+message TeamListResponse {
+    repeated Team teams = 1;
+}
 
 message Match {
     int64 id = 1;
@@ -51,7 +58,6 @@ message Match {
     int32 away_team_score = 5;
     string match_date = 6;
 }
-
 
 message MatchStats {
     int64 match_id = 1;
@@ -64,6 +70,15 @@ message MatchStats {
     int32 possession = 8;
     int32 fouls_committed = 9;
 }
+
+message MatchStatsRequest {
+    int64 match_id = 1;
+}
+
+message MatchStatsResponse {
+    repeated MatchStats match_stats = 1;
+}
+
 message TeamStats {
     int64 team_id = 1;
     int64 league_id = 2;
@@ -75,28 +90,6 @@ message TeamStats {
     int32 goals_conceded = 8;
     int32 points = 9;
     int32 goal_difference = 10;
-}
-
-message Empty {}
-
-message LeagueRequest {
-    int64 league_id = 1;
-}
-
-message LeagueListResponse {
-    repeated League leagues = 1;
-}
-
-message TeamListResponse {
-    repeated Team teams = 1;
-}
-
-message MatchStatsRequest {
-    int64 match_id = 1;
-}
-
-message MatchStatsResponse {
-    repeated MatchStats match_stats = 1;
 }
 
 message TeamStatsRequest {
