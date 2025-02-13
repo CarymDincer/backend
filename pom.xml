@@ -101,56 +101,7 @@
         <scope>runtime</scope>
     </dependency>
     
-    <!-- JUnit 5 -->
-<dependency>
-    <groupId>org.junit.jupiter</groupId>
-    <artifactId>junit-jupiter-api</artifactId>
-    <version>5.9.2</version>
-    <scope>test</scope>
-</dependency>
-<dependency>
-    <groupId>org.junit.jupiter</groupId>
-    <artifactId>junit-jupiter-engine</artifactId>
-    <version>5.9.2</version>
-    <scope>test</scope>
-</dependency>
-
-<!-- Mockito - Mocking için -->
-<dependency>
-    <groupId>org.mockito</groupId>
-    <artifactId>mockito-core</artifactId>
-    <version>5.2.0</version>
-    <scope>test</scope>
-</dependency>
-
-<!-- Spring Boot Test (Spring bileşenleri için) -->
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-test</artifactId>
-    <scope>test</scope>
-    <exclusions>
-        <exclusion>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
-
-<!-- TestContainers (PostgreSQL için) -->
-<dependency>
-    <groupId>org.testcontainers</groupId>
-    <artifactId>postgresql</artifactId>
-    <version>1.17.6</version>
-    <scope>test</scope>
-</dependency>
-
-<!-- gRPC için Test Bağımlılığı -->
-<dependency>
-    <groupId>io.grpc</groupId>
-    <artifactId>grpc-testing</artifactId>
-    <version>${grpc.version}</version>
-    <scope>test</scope>
-</dependency>
+   
 
     
 
