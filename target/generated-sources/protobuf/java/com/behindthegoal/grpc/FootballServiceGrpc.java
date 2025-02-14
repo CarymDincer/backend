@@ -201,6 +201,37 @@ public final class FootballServiceGrpc {
     return getGetMatchesByLeagueMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.behindthegoal.grpc.PaginatedLeagueRequest,
+      com.behindthegoal.grpc.PaginatedMatchListResponse> getGetMatchesByLeaguePaginatedMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetMatchesByLeaguePaginated",
+      requestType = com.behindthegoal.grpc.PaginatedLeagueRequest.class,
+      responseType = com.behindthegoal.grpc.PaginatedMatchListResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.behindthegoal.grpc.PaginatedLeagueRequest,
+      com.behindthegoal.grpc.PaginatedMatchListResponse> getGetMatchesByLeaguePaginatedMethod() {
+    io.grpc.MethodDescriptor<com.behindthegoal.grpc.PaginatedLeagueRequest, com.behindthegoal.grpc.PaginatedMatchListResponse> getGetMatchesByLeaguePaginatedMethod;
+    if ((getGetMatchesByLeaguePaginatedMethod = FootballServiceGrpc.getGetMatchesByLeaguePaginatedMethod) == null) {
+      synchronized (FootballServiceGrpc.class) {
+        if ((getGetMatchesByLeaguePaginatedMethod = FootballServiceGrpc.getGetMatchesByLeaguePaginatedMethod) == null) {
+          FootballServiceGrpc.getGetMatchesByLeaguePaginatedMethod = getGetMatchesByLeaguePaginatedMethod =
+              io.grpc.MethodDescriptor.<com.behindthegoal.grpc.PaginatedLeagueRequest, com.behindthegoal.grpc.PaginatedMatchListResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetMatchesByLeaguePaginated"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.behindthegoal.grpc.PaginatedLeagueRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.behindthegoal.grpc.PaginatedMatchListResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new FootballServiceMethodDescriptorSupplier("GetMatchesByLeaguePaginated"))
+              .build();
+        }
+      }
+    }
+    return getGetMatchesByLeaguePaginatedMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<com.behindthegoal.grpc.MatchStatsRequest,
       com.behindthegoal.grpc.MatchStatsResponse> getGetMatchStatsMethod;
 
@@ -448,6 +479,13 @@ public final class FootballServiceGrpc {
 
     /**
      */
+    default void getMatchesByLeaguePaginated(com.behindthegoal.grpc.PaginatedLeagueRequest request,
+        io.grpc.stub.StreamObserver<com.behindthegoal.grpc.PaginatedMatchListResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMatchesByLeaguePaginatedMethod(), responseObserver);
+    }
+
+    /**
+     */
     default void getMatchStats(com.behindthegoal.grpc.MatchStatsRequest request,
         io.grpc.stub.StreamObserver<com.behindthegoal.grpc.MatchStatsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMatchStatsMethod(), responseObserver);
@@ -559,6 +597,14 @@ public final class FootballServiceGrpc {
 
     /**
      */
+    public void getMatchesByLeaguePaginated(com.behindthegoal.grpc.PaginatedLeagueRequest request,
+        io.grpc.stub.StreamObserver<com.behindthegoal.grpc.PaginatedMatchListResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetMatchesByLeaguePaginatedMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void getMatchStats(com.behindthegoal.grpc.MatchStatsRequest request,
         io.grpc.stub.StreamObserver<com.behindthegoal.grpc.MatchStatsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -654,6 +700,13 @@ public final class FootballServiceGrpc {
     public com.behindthegoal.grpc.MatchListResponse getMatchesByLeague(com.behindthegoal.grpc.LeagueRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetMatchesByLeagueMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.behindthegoal.grpc.PaginatedMatchListResponse getMatchesByLeaguePaginated(com.behindthegoal.grpc.PaginatedLeagueRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetMatchesByLeaguePaginatedMethod(), getCallOptions(), request);
     }
 
     /**
@@ -758,6 +811,14 @@ public final class FootballServiceGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<com.behindthegoal.grpc.PaginatedMatchListResponse> getMatchesByLeaguePaginated(
+        com.behindthegoal.grpc.PaginatedLeagueRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetMatchesByLeaguePaginatedMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<com.behindthegoal.grpc.MatchStatsResponse> getMatchStats(
         com.behindthegoal.grpc.MatchStatsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -803,11 +864,12 @@ public final class FootballServiceGrpc {
   private static final int METHODID_UPDATE_TEAM = 3;
   private static final int METHODID_DELETE_TEAM = 4;
   private static final int METHODID_GET_MATCHES_BY_LEAGUE = 5;
-  private static final int METHODID_GET_MATCH_STATS = 6;
-  private static final int METHODID_CREATE_MATCH_STATS = 7;
-  private static final int METHODID_UPDATE_MATCH_STATS = 8;
-  private static final int METHODID_GET_TEAM_STATS = 9;
-  private static final int METHODID_UPDATE_TEAM_STATS = 10;
+  private static final int METHODID_GET_MATCHES_BY_LEAGUE_PAGINATED = 6;
+  private static final int METHODID_GET_MATCH_STATS = 7;
+  private static final int METHODID_CREATE_MATCH_STATS = 8;
+  private static final int METHODID_UPDATE_MATCH_STATS = 9;
+  private static final int METHODID_GET_TEAM_STATS = 10;
+  private static final int METHODID_UPDATE_TEAM_STATS = 11;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -849,6 +911,10 @@ public final class FootballServiceGrpc {
         case METHODID_GET_MATCHES_BY_LEAGUE:
           serviceImpl.getMatchesByLeague((com.behindthegoal.grpc.LeagueRequest) request,
               (io.grpc.stub.StreamObserver<com.behindthegoal.grpc.MatchListResponse>) responseObserver);
+          break;
+        case METHODID_GET_MATCHES_BY_LEAGUE_PAGINATED:
+          serviceImpl.getMatchesByLeaguePaginated((com.behindthegoal.grpc.PaginatedLeagueRequest) request,
+              (io.grpc.stub.StreamObserver<com.behindthegoal.grpc.PaginatedMatchListResponse>) responseObserver);
           break;
         case METHODID_GET_MATCH_STATS:
           serviceImpl.getMatchStats((com.behindthegoal.grpc.MatchStatsRequest) request,
@@ -930,6 +996,13 @@ public final class FootballServiceGrpc {
               com.behindthegoal.grpc.LeagueRequest,
               com.behindthegoal.grpc.MatchListResponse>(
                 service, METHODID_GET_MATCHES_BY_LEAGUE)))
+        .addMethod(
+          getGetMatchesByLeaguePaginatedMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.behindthegoal.grpc.PaginatedLeagueRequest,
+              com.behindthegoal.grpc.PaginatedMatchListResponse>(
+                service, METHODID_GET_MATCHES_BY_LEAGUE_PAGINATED)))
         .addMethod(
           getGetMatchStatsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1019,6 +1092,7 @@ public final class FootballServiceGrpc {
               .addMethod(getUpdateTeamMethod())
               .addMethod(getDeleteTeamMethod())
               .addMethod(getGetMatchesByLeagueMethod())
+              .addMethod(getGetMatchesByLeaguePaginatedMethod())
               .addMethod(getGetMatchStatsMethod())
               .addMethod(getCreateMatchStatsMethod())
               .addMethod(getUpdateMatchStatsMethod())

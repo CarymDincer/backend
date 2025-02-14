@@ -4,6 +4,9 @@ import com.behindthegoal.grpc.*;
 import io.grpc.stub.StreamObserver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import domain.*;
 import persistence.*;
 
@@ -281,6 +284,30 @@ public class FootballServiceGrpcImpl extends FootballServiceGrpc.FootballService
                 .setGoalsConceded(savedStats.getGoalsConceded())
                 .setPoints(savedStats.getPoints())
                 .setGoalDifference(savedStats.getGoalDifference())
+                .build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
+    @Override
+    public void getMatchesByLeaguePaginated(PaginatedLeagueRequest request, StreamObserver<PaginatedMatchListResponse> responseObserver) {
+        Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
+        Page<MatchEntity> matchPage = matchService.getMatchesByLeagueWithPagination(request.getLeagueId(), pageable);
+
+        PaginatedMatchListResponse response = PaginatedMatchListResponse.newBuilder()
+                .addAllMatches(matchPage.getContent().stream().map(match ->
+                        Match.newBuilder()
+                                .setId(match.getId())
+                                .setHomeTeamId(match.getHomeTeam().getId())
+                                .setAwayTeamId(match.getAwayTeam().getId())
+                                .setHomeTeamScore(match.getHomeTeamScore())
+                                .setAwayTeamScore(match.getAwayTeamScore())
+                                .setMatchDate(match.getMatchDate())
+                                .build()
+                ).toList())
+                .setTotalPages(matchPage.getTotalPages())
+                .setTotalElements((int) matchPage.getTotalElements())
+                .setCurrentPage(matchPage.getNumber())
                 .build();
 
         responseObserver.onNext(response);

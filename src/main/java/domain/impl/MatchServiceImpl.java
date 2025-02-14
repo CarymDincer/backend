@@ -7,6 +7,8 @@ import persistence.MatchEntity;
 import persistence.MatchRepository;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @Service
 public class MatchServiceImpl implements MatchService{
@@ -27,6 +29,9 @@ public class MatchServiceImpl implements MatchService{
     public Optional<MatchEntity> getMatchById(Long id) {
         return matchRepository.findById(id);
     }
-
+    @Override
+    public Page<MatchEntity> getMatchesByLeagueWithPagination(Long leagueId, Pageable pageable) {
+        return matchRepository.findByLeagueId(leagueId, pageable);
+    }
 
 }

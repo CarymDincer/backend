@@ -95,6 +95,16 @@ public final class FootballServiceProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_api_grpc_MatchListResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_api_grpc_PaginatedLeagueRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_api_grpc_PaginatedLeagueRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_api_grpc_PaginatedMatchListResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_api_grpc_PaginatedMatchListResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -131,26 +141,34 @@ public final class FootballServiceProto {
       "quest\022\017\n\007team_id\030\001 \001(\003\"<\n\021TeamStatsRespo" +
       "nse\022\'\n\nteam_stats\030\001 \001(\0132\023.api.grpc.TeamS" +
       "tats\"5\n\021MatchListResponse\022 \n\007matches\030\001 \003" +
-      "(\0132\017.api.grpc.Match2\303\005\n\017FootballService\022" +
-      "<\n\013ListLeagues\022\017.api.grpc.Empty\032\034.api.gr" +
-      "pc.LeagueListResponse\022@\n\tListTeams\022\027.api" +
-      ".grpc.LeagueRequest\032\032.api.grpc.TeamListR" +
-      "esponse\022,\n\nCreateTeam\022\016.api.grpc.Team\032\016." +
-      "api.grpc.Team\022,\n\nUpdateTeam\022\016.api.grpc.T" +
-      "eam\032\016.api.grpc.Team\0226\n\nDeleteTeam\022\027.api." +
-      "grpc.LeagueRequest\032\017.api.grpc.Empty\022J\n\022G" +
-      "etMatchesByLeague\022\027.api.grpc.LeagueReque" +
-      "st\032\033.api.grpc.MatchListResponse\022J\n\rGetMa" +
-      "tchStats\022\033.api.grpc.MatchStatsRequest\032\034." +
-      "api.grpc.MatchStatsResponse\022>\n\020CreateMat" +
-      "chStats\022\024.api.grpc.MatchStats\032\024.api.grpc" +
-      ".MatchStats\022>\n\020UpdateMatchStats\022\024.api.gr" +
-      "pc.MatchStats\032\024.api.grpc.MatchStats\022G\n\014G" +
-      "etTeamStats\022\032.api.grpc.TeamStatsRequest\032" +
-      "\033.api.grpc.TeamStatsResponse\022;\n\017UpdateTe" +
-      "amStats\022\023.api.grpc.TeamStats\032\023.api.grpc." +
-      "TeamStatsB0\n\026com.behindthegoal.grpcB\024Foo" +
-      "tballServiceProtoP\001b\006proto3"
+      "(\0132\017.api.grpc.Match\"G\n\026PaginatedLeagueRe" +
+      "quest\022\021\n\tleague_id\030\001 \001(\003\022\014\n\004page\030\002 \001(\005\022\014" +
+      "\n\004size\030\003 \001(\005\"\201\001\n\032PaginatedMatchListRespo" +
+      "nse\022 \n\007matches\030\001 \003(\0132\017.api.grpc.Match\022\023\n" +
+      "\013total_pages\030\002 \001(\005\022\026\n\016total_elements\030\003 \001" +
+      "(\005\022\024\n\014current_page\030\004 \001(\0052\252\006\n\017FootballSer" +
+      "vice\022<\n\013ListLeagues\022\017.api.grpc.Empty\032\034.a" +
+      "pi.grpc.LeagueListResponse\022@\n\tListTeams\022" +
+      "\027.api.grpc.LeagueRequest\032\032.api.grpc.Team" +
+      "ListResponse\022,\n\nCreateTeam\022\016.api.grpc.Te" +
+      "am\032\016.api.grpc.Team\022,\n\nUpdateTeam\022\016.api.g" +
+      "rpc.Team\032\016.api.grpc.Team\0226\n\nDeleteTeam\022\027" +
+      ".api.grpc.LeagueRequest\032\017.api.grpc.Empty" +
+      "\022J\n\022GetMatchesByLeague\022\027.api.grpc.League" +
+      "Request\032\033.api.grpc.MatchListResponse\022e\n\033" +
+      "GetMatchesByLeaguePaginated\022 .api.grpc.P" +
+      "aginatedLeagueRequest\032$.api.grpc.Paginat" +
+      "edMatchListResponse\022J\n\rGetMatchStats\022\033.a" +
+      "pi.grpc.MatchStatsRequest\032\034.api.grpc.Mat" +
+      "chStatsResponse\022>\n\020CreateMatchStats\022\024.ap" +
+      "i.grpc.MatchStats\032\024.api.grpc.MatchStats\022" +
+      ">\n\020UpdateMatchStats\022\024.api.grpc.MatchStat" +
+      "s\032\024.api.grpc.MatchStats\022G\n\014GetTeamStats\022" +
+      "\032.api.grpc.TeamStatsRequest\032\033.api.grpc.T" +
+      "eamStatsResponse\022;\n\017UpdateTeamStats\022\023.ap" +
+      "i.grpc.TeamStats\032\023.api.grpc.TeamStatsB0\n" +
+      "\026com.behindthegoal.grpcB\024FootballService" +
+      "ProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -240,6 +258,18 @@ public final class FootballServiceProto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_api_grpc_MatchListResponse_descriptor,
         new java.lang.String[] { "Matches", });
+    internal_static_api_grpc_PaginatedLeagueRequest_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_api_grpc_PaginatedLeagueRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_api_grpc_PaginatedLeagueRequest_descriptor,
+        new java.lang.String[] { "LeagueId", "Page", "Size", });
+    internal_static_api_grpc_PaginatedMatchListResponse_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_api_grpc_PaginatedMatchListResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_api_grpc_PaginatedMatchListResponse_descriptor,
+        new java.lang.String[] { "Matches", "TotalPages", "TotalElements", "CurrentPage", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

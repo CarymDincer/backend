@@ -14,6 +14,8 @@ service FootballService {
     rpc DeleteTeam (LeagueRequest) returns (Empty);
     
     rpc GetMatchesByLeague (LeagueRequest) returns (MatchListResponse);
+    rpc GetMatchesByLeaguePaginated (PaginatedLeagueRequest) returns (PaginatedMatchListResponse);
+    
     
     rpc GetMatchStats (MatchStatsRequest) returns (MatchStatsResponse);
     rpc CreateMatchStats (MatchStats) returns (MatchStats);
@@ -102,4 +104,16 @@ message TeamStatsResponse {
 
 message MatchListResponse {
     repeated Match matches = 1;
+}
+message PaginatedLeagueRequest {
+    int64 league_id = 1;
+    int32 page = 2;
+    int32 size = 3;
+}
+
+message PaginatedMatchListResponse {
+    repeated Match matches = 1;
+    int32 total_pages = 2;
+    int32 total_elements = 3;
+    int32 current_page = 4;
 }
