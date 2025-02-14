@@ -14,15 +14,15 @@ import java.util.stream.Collectors;
 @Service
 public class FootballServiceGrpcImpl extends FootballServiceGrpc.FootballServiceImplBase{
 	@Autowired
-    private TeamService teamService;
+    public TeamService teamService;
     @Autowired
-    private LeagueService leagueService; 
+    public LeagueService leagueService; 
     @Autowired
-    private MatchStatsService matchStatsService;
+    public MatchStatsService matchStatsService;
     @Autowired
-    private TeamStatsService teamStatsService;
+    public TeamStatsService teamStatsService;
     @Autowired
-    private MatchService matchService;
+    public MatchService matchService;
 
     @Override
     public void listLeagues(Empty request, StreamObserver<LeagueListResponse> responseObserver) {

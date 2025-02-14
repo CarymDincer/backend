@@ -20,7 +20,7 @@
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
         <protobuf.version>4.27.4</protobuf.version>
-        <grpc.version>1.66.0</grpc.version>
+        <grpc.version>1.64.0</grpc.version>
         <hibernate.version>6.2.0.Final</hibernate.version> 
   
     </properties>
@@ -87,12 +87,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>  
-        <!-- Spring Boot Test Framework -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-test</artifactId>
-        <scope>test</scope>
-    </dependency>
+       
 
     <!-- H2 Database (Test için) -->
     <dependency>
@@ -100,7 +95,7 @@
         <artifactId>h2</artifactId>
         <scope>runtime</scope>
     </dependency>
-    
+
    
 
     
@@ -161,17 +156,15 @@
 </dependency>
 
 
-    
-    
-    
 
-    <!-- gRPC Test -->
+<!-- gRPC Test -->
     <dependency>
         <groupId>io.grpc</groupId>
         <artifactId>grpc-testing</artifactId>
           <version>1.66.0</version>
         <scope>test</scope>
     </dependency>
+    
     </dependencies>
 
     <build>
@@ -199,7 +192,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
             <configuration>
-                <mainClass>com.behindthegoal.Main</mainClass> <!-- ✅ Burada main class'ı belirt -->
+                <mainClass>com.behindthegoal.Main</mainClass> 
             </configuration>
         </plugin>
             <!-- Java Compiler Plugin -->
@@ -209,7 +202,7 @@
             </plugin>
 
             <!-- Protobuf Compiler Plugin -->
-            <plugin>
+   <plugin>
     <groupId>org.xolstice.maven.plugins</groupId>
     <artifactId>protobuf-maven-plugin</artifactId>
     <version>0.6.1</version>
@@ -231,6 +224,9 @@
         </execution>
     </executions>
 </plugin>
+
+
+
         </plugins>
     </build>
 </project>
