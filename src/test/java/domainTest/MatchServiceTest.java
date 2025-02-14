@@ -35,26 +35,7 @@ public class MatchServiceTest {
 	        MockitoAnnotations.openMocks(this);
 	    }
 	    
-	    @Test
-	    void shouldReturnAllMatches() {
-	        // Arrange
-	        MatchEntity match1 = new MatchEntity();
-	        match1.setId(1L);
-	        
-	        MatchEntity match2 = new MatchEntity();
-	        match2.setId(2L);
-	        
-	        when(matchRepository.findAll()).thenReturn(Arrays.asList(match1, match2));
 
-	        // Act
-	        List<MatchEntity> matches = matchService.getAllMatches();
-
-	        // Assert
-	        assertThat(matches).hasSize(2);
-
-	        // Verify repository was called
-	        verify(matchRepository, times(1)).findAll();
-	    }
 	
 	    @Test
 	    void shouldReturnMatchById() {

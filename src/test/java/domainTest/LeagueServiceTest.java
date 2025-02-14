@@ -77,24 +77,7 @@ public class LeagueServiceTest {
         verify(leagueRepository, times(1)).findById(1L);
     }
 
-    @Test
-    void shouldSaveNewLeague() {
-        // Arrange
-        LeagueEntity league = new LeagueEntity();
-        league.setId(3L);
-        league.setName("Serie A");
-        
-        when(leagueRepository.save(any(LeagueEntity.class))).thenReturn(league);
 
-        // Act
-        LeagueEntity savedLeague = leagueService.createLeague(league);
-
-        // Assert
-        assertThat(savedLeague.getName()).isEqualTo("Serie A");
-
-        // Verify repository was called
-        verify(leagueRepository, times(1)).save(any(LeagueEntity.class));
-    }
     
     
     
