@@ -57,8 +57,8 @@ public class FootballServiceGrpcImplTest {
 
     @AfterEach
     void teardown() throws InterruptedException {
-        inProcessServer.shutdown();
-        inProcessChannel.shutdown();
+        inProcessServer.shutdownNow();
+        inProcessChannel.shutdownNow();
     }
 
     @Test
