@@ -1,6 +1,9 @@
 package domain.impl;
 
 import domain.MatchStatsService;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import persistence.MatchStatsEntity;
@@ -28,25 +31,36 @@ public class MatchStatsServiceImpl implements MatchStatsService{
         return matchStatsRepository.findById(id);
     }
 
+    @Transactional
     @Override
     public MatchStatsEntity createMatchStats(MatchStatsEntity matchStats) {
         return matchStatsRepository.save(matchStats);
     }
-    @Override
-    public MatchStatsEntity updateMatchStats(Long id, MatchStatsEntity updatedStats) {
-        return matchStatsRepository.findById(id)
-                .map(existingStats -> {
-                    existingStats.setGoals(updatedStats.getGoals());
-                    existingStats.setYellowCards(updatedStats.getYellowCards());
-                    existingStats.setRedCards(updatedStats.getRedCards());
-                    existingStats.setShots(updatedStats.getShots());
-                    existingStats.setShotsOnTarget(updatedStats.getShotsOnTarget());
-                    existingStats.setPossession(updatedStats.getPossession());
-                    existingStats.setFoulsCommitted(updatedStats.getFoulsCommitted());
-                    return matchStatsRepository.save(existingStats);
-                })
-                .orElseThrow(() -> new RuntimeException("Match Stats not found for ID: " + id));
+    
+    
+    
+    @Transactional
+    public MatchStatsEntity updateMatchStats(Long id, MatchStatsEntity matchStats) {
+        System.out.println("Fetching MatchStatsEntity with lock...");
+        
+        // 🔐 Pessimistic Lock ile veriyi getiriyoruz.
+        MatchStatsEntity existingStats = matchStatsRepository.findByIdWithLock(id)
+            .orElseThrow(() -> new EntityNotFoundException("MatchStatsEntity not found"));
+
+        System.out.println("Updating MatchStatsEntity...");
+        existingStats.setGoals(matchStats.getGoals());
+        existingStats.setShots(matchStats.getShots());
+        existingStats.setShotsOnTarget(matchStats.getShotsOnTarget());
+        existingStats.setPossession(matchStats.getPossession());
+        existingStats.setFoulsCommitted(matchStats.getFoulsCommitted());
+        existingStats.setYellowCards(matchStats.getYellowCards());
+        existingStats.setRedCards(matchStats.getRedCards());
+        
+        
+        matchStatsRepository.flush();  
+        return matchStatsRepository.save(existingStats);
     }
+
     
 
 }

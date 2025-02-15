@@ -5,11 +5,13 @@ import com.behindthegoal.grpc.TeamStats;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "team_stats")
+@Table(name = "TEAM_STATS")
 public class TeamStatsEntity {
 	
 	@Id
+	@Column(name = "team_stats_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
     private Long id;
 
     @OneToOne
@@ -23,11 +25,16 @@ public class TeamStatsEntity {
     private int matchesPlayed;
     private int wins;
     private int draws;
+    
+    @Column(name = "losses", nullable = false)
     private int losses;
+
     private int goalsScored;
     private int goalsConceded;
     private int points;
     private int goalDifference;
+    
+ 
 	public Long getId() {
 		return id;
 	}

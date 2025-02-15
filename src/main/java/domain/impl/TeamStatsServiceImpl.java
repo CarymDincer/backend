@@ -1,17 +1,19 @@
 package domain.impl;
 
 import domain.TeamStatsService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import persistence.TeamStatsEntity;
 import persistence.TeamStatsRepository;
 import persistence.TeamRepository;
+import persistence.TeamEntity;
 import java.util.Optional;
 
 @Service
-public class TeamStatsServiceImpl implements TeamStatsService{
-	
-	private final TeamStatsRepository teamStatsRepository;
+public class TeamStatsServiceImpl implements TeamStatsService {
+
+    private final TeamStatsRepository teamStatsRepository;
     private final TeamRepository teamRepository;
 
     @Autowired
@@ -26,6 +28,8 @@ public class TeamStatsServiceImpl implements TeamStatsService{
                 .flatMap(teamStatsRepository::findByTeam);
     }
 
+
+    @Transactional
     @Override
     public TeamStatsEntity updateTeamStats(TeamStatsEntity teamStats) {
         return teamStatsRepository.findByTeam(teamStats.getTeam())
@@ -42,6 +46,4 @@ public class TeamStatsServiceImpl implements TeamStatsService{
                 })
                 .orElseGet(() -> teamStatsRepository.save(teamStats));
     }
-
-
 }

@@ -3,10 +3,12 @@ import java.util.*;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "teams")
+@Table(name = "TEAMS")
 public class TeamEntity {
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "team_id")
     private Long id;
 
     @Column(nullable = false)
@@ -21,6 +23,8 @@ public class TeamEntity {
 
     @OneToOne(mappedBy = "team", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private TeamStatsEntity teamStats;
+    
+   
 
 	public Long getId() {
 		return id;

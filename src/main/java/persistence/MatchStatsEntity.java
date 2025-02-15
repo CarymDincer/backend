@@ -2,10 +2,11 @@ package persistence;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "match_stats")
+@Table(name = "MATCH_STATS")
 public class MatchStatsEntity {
 	
 	@Id
+	@Column(name = "MATCH_STATS_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -24,6 +25,8 @@ public class MatchStatsEntity {
     private int shotsOnTarget;
     private int possession;
     private int foulsCommitted;
+    
+    
     
     public Long getId() {
         return id;

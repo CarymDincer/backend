@@ -5,10 +5,11 @@ import java.util.*;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "matches")
+@Table(name = "MATCHES")
 public class MatchEntity {
 	
 	@Id
+	@Column(name = "match_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -32,6 +33,8 @@ public class MatchEntity {
 
     @OneToMany(mappedBy = "match", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MatchStatsEntity> matchStats = new ArrayList<>();
+    
+    
     
     public Long getId() {
         return id;

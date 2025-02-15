@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <!-- ✅ Spring Boot Parent Tanımlaması (Versiyon burada yöneltiliyor) -->
-    <parent>
+    <parent>	
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.2</version>
@@ -32,6 +32,20 @@
             <artifactId>protobuf-java</artifactId>
             <version>${protobuf.version}</version>
         </dependency>
+        <!--Test Container Dependency-->
+        <dependency>
+    <groupId>org.testcontainers</groupId>
+    <artifactId>postgresql</artifactId>
+    
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.testcontainers</groupId>
+    <artifactId>junit-jupiter</artifactId>
+    
+    <scope>test</scope>
+</dependency>
+        
 
         <!-- Google gRPC -->
         <dependency>
@@ -224,6 +238,43 @@
         </execution>
     </executions>
 </plugin>
+
+
+<!-- Jib Plugin-->
+
+<plugin>
+    <groupId>com.google.cloud.tools</groupId>
+    <artifactId>jib-maven-plugin</artifactId>
+    <version>3.3.1</version>
+    <configuration>
+        <to>
+            <image>behind-the-goal-backend:latest</image>
+        </to>
+    </configuration>
+</plugin>
+
+
+<!-- Spotify Docker Plugin-->
+<plugin>
+    <groupId>com.spotify</groupId>
+    <artifactId>dockerfile-maven-plugin</artifactId>
+    <version>1.4.13</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>build</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <repository>behind-the-goal-backend</repository>
+        <tag>latest</tag>
+    </configuration>
+</plugin>
+
+
+
+
 
 
 

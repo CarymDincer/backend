@@ -7,14 +7,18 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "leagues")
 public class LeagueEntity {
+	
+	
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "league_id")
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "league_name",nullable = false, unique = true)
     private String name;
 
-    @Column(nullable = false)
+    @Column(name = "country",nullable = false)
     private String country;
 
     @OneToMany(mappedBy = "league", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -23,6 +27,16 @@ public class LeagueEntity {
     @OneToMany(mappedBy = "league", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TeamStatsEntity> teamStats = new ArrayList<>();
 
+    
+    public LeagueEntity() {}
+    
+    public LeagueEntity(String name, String country) {
+        this.name = name;
+        this.country = country;
+    }
+    
+    
+    
 	public Long getId() {
 		return id;
 	}

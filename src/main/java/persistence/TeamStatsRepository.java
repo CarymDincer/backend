@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface TeamStatsRepository extends JpaRepository<TeamStatsEntity, Long>{
-
-	Optional<TeamStatsEntity> findByTeam(TeamEntity team);
+public interface TeamStatsRepository extends JpaRepository<TeamStatsEntity, Long> {
+    Optional<TeamStatsEntity> findByTeam(TeamEntity teamEntity); // 🔄 Doğru metot
 }
+
