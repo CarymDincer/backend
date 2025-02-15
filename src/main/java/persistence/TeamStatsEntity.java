@@ -33,6 +33,11 @@ public class TeamStatsEntity {
     private int goalsConceded;
     private int points;
     private int goalDifference;
+    
+    @Version  // ✅ Eğer yine de eklemek istersen
+    @Column(name = "version1")
+    private int version;
+    
 	public Long getId() {
 		return id;
 	}

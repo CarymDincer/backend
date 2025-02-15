@@ -47,7 +47,7 @@ public class LeagueServiceIT {
 
     
     @BeforeEach
-//    @Transactional
+    @Transactional
     void cleanDatabase() {
     	
         leagueRepository.deleteAll(); // Her test öncesi temizleme
@@ -56,15 +56,15 @@ public class LeagueServiceIT {
 
     @Test
     void shouldSaveAndRetrieveLeagues() {
-//    	LeagueEntity league1 = new LeagueEntity();
-//    	league1.setName("Premier League");
-//    	league1.setCountry("England");
-//    	
-//    	
+    	LeagueEntity league1 = new LeagueEntity();
+    	league1.setName("Premier League");
+    	league1.setCountry("England");
+    	
+    	
     	LeagueEntity league2 = new LeagueEntity();
     	league2.setName("La Liga");
     	league2.setCountry("England");
-    	
+    	league2.setId(324678l);
 
         leagueRepository.save(league2);
 //        leagueRepository.save(league1);

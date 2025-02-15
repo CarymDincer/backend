@@ -34,6 +34,11 @@ public class MatchEntity {
     @OneToMany(mappedBy = "match", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MatchStatsEntity> matchStats = new ArrayList<>();
     
+    
+    @Version  // ✅ Eğer yine de eklemek istersen
+    @Column(name = "version1")
+    private int version;
+    
     public Long getId() {
         return id;
     }

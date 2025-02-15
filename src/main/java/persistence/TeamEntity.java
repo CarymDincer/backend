@@ -23,6 +23,10 @@ public class TeamEntity {
 
     @OneToOne(mappedBy = "team", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private TeamStatsEntity teamStats;
+    
+    @Version  // ✅ Eğer yine de eklemek istersen
+    @Column(name = "version1")
+    private int version;
 
 	public Long getId() {
 		return id;

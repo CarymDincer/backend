@@ -41,12 +41,9 @@ public class MatchStatsServiceImpl implements MatchStatsService{
     
     @Transactional
     public MatchStatsEntity updateMatchStats(Long id, MatchStatsEntity matchStats) {
-        System.out.println("Checking if MatchStatsEntity with ID " + id + " exists...");
-        if (!matchStatsRepository.existsById(id)) {
-            throw new EntityNotFoundException("MatchStatsEntity with ID " + id + " does not exist!");
-        }
-
         System.out.println("Fetching MatchStatsEntity with lock...");
+        
+        // 🔐 Pessimistic Lock ile veriyi getiriyoruz.
         MatchStatsEntity existingStats = matchStatsRepository.findByIdWithLock(id)
             .orElseThrow(() -> new EntityNotFoundException("MatchStatsEntity not found"));
 

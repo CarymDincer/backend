@@ -26,7 +26,9 @@ public class MatchStatsEntity {
     private int possession;
     private int foulsCommitted;
     
-    
+    @Version  // ✅ Optimistic Locking için ekleme
+    @Column(name = "version1")
+    private int version; 
     
     public Long getId() {
         return id;
