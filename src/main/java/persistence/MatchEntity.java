@@ -5,7 +5,7 @@ import java.util.*;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "matches")
+@Table(name = "MATCHES")
 public class MatchEntity {
 	
 	@Id

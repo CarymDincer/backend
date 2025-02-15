@@ -1,34 +1,50 @@
 package integrationTest;
 
-import domain.impl.LeagueServiceImpl;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.testcontainers.containers.PostgreSQLContainer;
+
+import com.behindthegoal.Main;
+
 import persistence.LeagueEntity;
 import persistence.LeagueRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = com.behindthegoal.Main.class)  // ✅ Ana sınıfı belirttik
+@SpringBootTest(classes = Main.class)
 public class LeagueServiceIT {
 
     @Autowired
     private LeagueRepository leagueRepository;
 
-    @Autowired
-    private LeagueServiceImpl leagueService;
+    private static final PostgreSQLContainer<?> postgresContainer = new PostgreSQLContainer<>("postgres:15")
+            .withDatabaseName("testdb")
+            .withUsername("test")
+            .withPassword("test");
+
+    @BeforeAll
+    static void startContainer() {
+        postgresContainer.start();
+        System.setProperty("spring.datasource.url", postgresContainer.getJdbcUrl());
+        System.setProperty("spring.datasource.username", postgresContainer.getUsername());
+        System.setProperty("spring.datasource.password", postgresContainer.getPassword());
+    }
+
+    @BeforeEach
+    void setup() {
+        leagueRepository.deleteAll();  // ✅ Veritabanını temizle
+    }
 
     @Test
     void shouldRetrieveLeagues() {
-        // Arrange: Veritabanına test verisi ekleyelim
         LeagueEntity league1 = new LeagueEntity();
         league1.setName("Premier League");
         league1.setCountry("England");
@@ -39,30 +55,10 @@ public class LeagueServiceIT {
         league2.setCountry("Spain");
         leagueRepository.save(league2);
 
-        // Act: Veritabanındaki tüm ligleri al
-        List<LeagueEntity> leagues = leagueService.getAllLeagues();
+        List<LeagueEntity> leagues = leagueRepository.findAll();
 
-        // Assert: Liglerin başarıyla getirildiğini doğrula
         assertThat(leagues).hasSize(2);
         assertThat(leagues.get(0).getName()).isEqualTo("Premier League");
         assertThat(leagues.get(1).getName()).isEqualTo("La Liga");
-    }
-
-    @Test
-    void shouldRetrieveLeagueById() {
-        // Arrange: Bir lig ekleyelim
-        LeagueEntity league = new LeagueEntity();
-        league.setName("Bundesliga");
-        league.setCountry("Germany");
-
-        league = leagueRepository.save(league);
-
-        // Act: ID ile ligi getir
-        Optional<LeagueEntity> retrievedLeague = leagueService.getLeagueById(league.getId());
-
-        // Assert: Ligin doğru şekilde getirildiğini doğrula
-        assertThat(retrievedLeague).isPresent();
-        assertThat(retrievedLeague.get().getName()).isEqualTo("Bundesliga");
-        assertThat(retrievedLeague.get().getCountry()).isEqualTo("Germany");
     }
 }

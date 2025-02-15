@@ -3,24 +3,19 @@ server:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: 
-  h2:
-    console:
-      enabled: true  # H2 Web Konsolunu Aç (http://localhost:8080/h2-console)
+    url: jdbc:tc:postgresql:15:///testdb  #  Testcontainers PostgreSQL kullan
+    driver-class-name: org.postgresql.Driver
+    username: test
+    password: test
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect  #  PostgreSQL'e uygun dialect
     hibernate:
-      ddl-auto: none  # Tabloları otomatik oluşturur, kapatmak için "none" yapabilirsin
-    show-sql: true  # Konsolda SQL çıktısını göster
-    properties:
-      hibernate:
-        globally_quoted_identifiers: true  # Tablo ve sütun isimlerini büyük/küçük harf korumalı yapar
+      ddl-auto: update  #  Tabloları silmemesi için "update" kullan (veya "none")
+    show-sql: true  #  SQL sorgularını logda görmek için
   sql:
     init:
-      mode: always  # schema.sql ve data.sql her zaman çalıştırılır
+      mode: always  #  schema.sql ve data.sql her zaman çalıştırılsın
+      platform: postgres  #  PostgreSQL kullanıldığını belirt
 
 grpc:
   server:

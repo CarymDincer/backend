@@ -5,7 +5,7 @@ import com.behindthegoal.grpc.TeamStats;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "team_stats")
+@Table(name = "TEAM_STATS")
 public class TeamStatsEntity {
 	
 	@Id

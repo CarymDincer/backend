@@ -2,7 +2,7 @@ package persistence;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "match_stats")
+@Table(name = "MATCH_STATS")
 public class MatchStatsEntity {
 	
 	@Id

@@ -1,4 +1,4 @@
-INSERT INTO LEAGUES (league_id, league_name, country) 
+INSERT INTO LEAGUE (league_id, league_name, country) 
 VALUES (1, 'Premier League', 'England');
 INSERT INTO TEAMS (team_id, name, league_id) 
 VALUES 
