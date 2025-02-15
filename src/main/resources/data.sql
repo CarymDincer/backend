@@ -1,5 +1,6 @@
-INSERT INTO LEAGUE (league_id, league_name, country) 
+INSERT INTO LEAGUES (league_id, league_name, country) 
 VALUES (1, 'Premier League', 'England');
+
 INSERT INTO TEAMS (team_id, name, league_id) 
 VALUES 
 (8, 'Manchester United', 1),
@@ -7,20 +8,22 @@ VALUES
 (6, 'Chelsea', 1),
 (2, 'Arsenal', 1),
 (1, 'Manchester City', 1),
-(4, 'Aston Villa', 1);
-(7, 'Newcastle United', 1);
-(9, 'West Ham United', 1);
-(10, 'Crystal Palace', 1);
-(11, 'Brighton', 1);
-(12, 'Bournemouth', 1);
-(13, 'Fulham', 1);
-(14, 'Wolwes', 1);
-(15, 'Everton', 1);
-(16, 'Brentford', 1);
-(17, 'Notingham Forest', 1);
-(18, 'Luton Town', 1);
-(19, 'Burnley', 1);
+(4, 'Aston Villa', 1),
+(5, 'Tottenham Hotspur', 1),
+(7, 'Newcastle United', 1),
+(9, 'West Ham United', 1),
+(10, 'Crystal Palace', 1),
+(11, 'Brighton', 1),
+(12, 'Bournemouth', 1),
+(13, 'Fulham', 1),
+(14, 'Wolves', 1),
+(15, 'Everton', 1),
+(16, 'Brentford', 1),
+(17, 'Nottingham Forest', 1),
+(18, 'Luton Town', 1),
+(19, 'Burnley', 1),
 (20, 'Sheffield United', 1);
+
 INSERT INTO MATCHES (match_id, match_date, home_team_score, away_team_score, league_id, home_team_id, away_team_id) 
 VALUES 
 (1, '2023-08-11', 0, 3, 1, 19, 1),  
@@ -1916,10 +1919,10 @@ VALUES
 (761, 380, 14, 2, 1, 0, 11, 6, 50, 10),
 (762, 380, 6, 1, 2, 0, 10, 5, 50, 11);
 
-INSERT INTO TEAM_STATS (team_stats_id, team_id, league_id, matches_played, wins, draws, losses, goals_scored, goals_conceded, points, goal_difference) VALUES
+INSERT INTO TEAM_STATS (team_stats_id, team_id, league_id, matches_played, wins, draws, loses, goals_scored, goals_conceded, points, goal_difference) VALUES
 (1, 1, 1, 38, 28, 7, 3, 96, 34, 91, 62),
 (2, 2, 1, 38, 28, 5, 5, 91, 29, 89, 62),
-(3, 3, 1, 38, 24, 10, 4, 86, 41, 82, 45)
+(3, 3, 1, 38, 24, 10, 4, 86, 41, 82, 45),
 (4, 4, 1, 38, 20, 8, 10, 76, 61, 68, 15),
 (5, 5, 1, 38, 20, 6, 12, 74, 61, 66, 13),
 (6, 6, 1, 38, 18, 9, 11, 77, 63, 63, 14),
