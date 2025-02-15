@@ -5,8 +5,10 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "TEAMS")
 public class TeamEntity {
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "team_id")
     private Long id;
 
     @Column(nullable = false)

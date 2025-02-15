@@ -1,6 +1,8 @@
 package domain.impl;
 
 import domain.TeamStatsService;
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import persistence.TeamStatsEntity;
@@ -26,6 +28,7 @@ public class TeamStatsServiceImpl implements TeamStatsService{
                 .flatMap(teamStatsRepository::findByTeam);
     }
 
+    @Transactional
     @Override
     public TeamStatsEntity updateTeamStats(TeamStatsEntity teamStats) {
         return teamStatsRepository.findByTeam(teamStats.getTeam())

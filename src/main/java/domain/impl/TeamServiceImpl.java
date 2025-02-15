@@ -1,6 +1,8 @@
 package domain.impl;
 
 import domain.TeamService;
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import persistence.TeamEntity;
@@ -28,11 +30,13 @@ public class TeamServiceImpl implements TeamService{
         return teamRepository.findById(id);
     }
 
+    @Transactional
     @Override
     public TeamEntity createTeam(TeamEntity team) {
         return teamRepository.save(team);
     }
 
+    @Transactional
     @Override
     public TeamEntity updateTeam(Long id, TeamEntity updatedTeam) {
         return teamRepository.findById(id).map(existingTeam -> {
@@ -42,6 +46,7 @@ public class TeamServiceImpl implements TeamService{
         }).orElseThrow(() -> new RuntimeException("Team not found!"));
     }
 
+    @Transactional
     @Override
     public void deleteTeam(Long id) {
         teamRepository.deleteById(id);

@@ -1919,7 +1919,7 @@ VALUES
 (761, 380, 14, 2, 1, 0, 11, 6, 50, 10),
 (762, 380, 6, 1, 2, 0, 10, 5, 50, 11);
 
-INSERT INTO TEAM_STATS (team_stats_id, team_id, league_id, matches_played, wins, draws, loses, goals_scored, goals_conceded, points, goal_difference) VALUES
+INSERT INTO TEAM_STATS (team_stats_id, team_id, league_id, matches_played, wins, draws, losses, goals_scored, goals_conceded, points, goal_difference) VALUES
 (1, 1, 1, 38, 28, 7, 3, 96, 34, 91, 62),
 (2, 2, 1, 38, 28, 5, 5, 91, 29, 89, 62),
 (3, 3, 1, 38, 24, 10, 4, 86, 41, 82, 45),

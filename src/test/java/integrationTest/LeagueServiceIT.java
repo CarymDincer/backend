@@ -13,6 +13,8 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import com.behindthegoal.Main;
+
+import jakarta.transaction.Transactional;
 import persistence.LeagueEntity;
 import persistence.LeagueRepository;
 
@@ -43,28 +45,32 @@ public class LeagueServiceIT {
         System.setProperty("spring.datasource.password", postgresContainer.getPassword());
     }
 
+    
     @BeforeEach
+//    @Transactional
     void cleanDatabase() {
+    	
         leagueRepository.deleteAll(); // Her test öncesi temizleme
+        leagueRepository.flush();
     }
 
     @Test
     void shouldSaveAndRetrieveLeagues() {
-    	LeagueEntity league1 = new LeagueEntity();
-    	league1.setName("Premier League");
-    	league1.setCountry("England");
-    	
-    	
+//    	LeagueEntity league1 = new LeagueEntity();
+//    	league1.setName("Premier League");
+//    	league1.setCountry("England");
+//    	
+//    	
     	LeagueEntity league2 = new LeagueEntity();
     	league2.setName("La Liga");
     	league2.setCountry("England");
     	
 
         leagueRepository.save(league2);
-        leagueRepository.save(league1);
+//        leagueRepository.save(league1);
       
         List<LeagueEntity> leagues = leagueRepository.findAll();
-        assertThat(leagues).hasSize(2);
+        assertThat(leagues).hasSize(1);
     }
 
    

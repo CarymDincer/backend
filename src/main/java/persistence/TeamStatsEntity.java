@@ -9,7 +9,9 @@ import jakarta.persistence.*;
 public class TeamStatsEntity {
 	
 	@Id
+	@Column(name = "team_stats_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
     private Long id;
 
     @OneToOne
@@ -23,7 +25,10 @@ public class TeamStatsEntity {
     private int matchesPlayed;
     private int wins;
     private int draws;
+    
+    @Column(name = "losses", nullable = false)
     private int losses;
+
     private int goalsScored;
     private int goalsConceded;
     private int points;

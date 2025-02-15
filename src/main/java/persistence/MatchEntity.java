@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 public class MatchEntity {
 	
 	@Id
+	@Column(name = "match_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
