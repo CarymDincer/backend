@@ -19,12 +19,12 @@ public interface MatchStatsRepository extends JpaRepository<MatchStatsEntity, Lo
     List<MatchStatsEntity> findByTeam(TeamEntity team);
     List<MatchStatsEntity> findByMatchId(long id);
     
-    // 🔐 Pessimistic Locking: Güncellenen satırı kilitle, başka işlemler beklesin
-    @Query("SELECT m FROM MatchStatsEntity m WHERE m.id = :id")
+    @Query("SELECT m FROM MatchStatsEntity m WHERE m.id = :id FOR UPDATE")
     @Lock(LockModeType.PESSIMISTIC_WRITE)  
     Optional<MatchStatsEntity> findByIdWithLock(@Param("id") Long id);
 
-    // ⚡ Güncellenen satırı önce okumak için (isteğe bağlı)
+
+    
     @Query("SELECT m FROM MatchStatsEntity m WHERE m.id = :id")
     @Lock(LockModeType.PESSIMISTIC_READ)  
     Optional<MatchStatsEntity> findByIdWithReadLock(@Param("id") Long id);

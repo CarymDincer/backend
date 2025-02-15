@@ -55,7 +55,9 @@ public class MatchStatsServiceImpl implements MatchStatsService{
         existingStats.setFoulsCommitted(matchStats.getFoulsCommitted());
         existingStats.setYellowCards(matchStats.getYellowCards());
         existingStats.setRedCards(matchStats.getRedCards());
-
+        
+        
+        matchStatsRepository.flush();  
         return matchStatsRepository.save(existingStats);
     }
 

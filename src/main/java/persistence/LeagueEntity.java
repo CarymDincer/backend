@@ -36,9 +36,6 @@ public class LeagueEntity {
     }
     
     
-    @Version  // ✅ Eğer yine de eklemek istersen
-    @Column(name = "version1")
-    private int version;
     
 	public Long getId() {
 		return id;

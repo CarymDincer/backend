@@ -102,7 +102,7 @@ public class MatchStatsServiceTest {
         updatedStats.setPossession(60);
         updatedStats.setFoulsCommitted(4);
 
-        when(matchStatsRepository.findById(1L)).thenReturn(Optional.of(existingStats));
+        when(matchStatsRepository.findByIdWithLock(1L)).thenReturn(Optional.of(existingStats));
         when(matchStatsRepository.save(any(MatchStatsEntity.class))).thenReturn(existingStats);
 
         // Act
@@ -114,7 +114,7 @@ public class MatchStatsServiceTest {
         assertThat(result.getPossession()).isEqualTo(60);
 
         // Verify repository was called
-        verify(matchStatsRepository, times(1)).findById(1L);
+        verify(matchStatsRepository, times(1)).findByIdWithLock(1L);
         verify(matchStatsRepository, times(1)).save(any(MatchStatsEntity.class));
     }
 }

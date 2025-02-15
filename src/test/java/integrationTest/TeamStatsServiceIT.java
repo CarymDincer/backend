@@ -25,7 +25,7 @@ import persistence.TeamRepository;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = Main.class)
-@Transactional // Verileri test sonrası geri almak için
+
 public class TeamStatsServiceIT {
 
     @Autowired
@@ -45,7 +45,7 @@ public class TeamStatsServiceIT {
         // Yeni bir takım oluştur
         TeamEntity team = new TeamEntity();
         team.setName("Test FC");
-        savedTeam = teamRepository.save(team);
+        
 
         // Takım istatistiklerini oluştur ve kaydet
         TeamStatsEntity stats = new TeamStatsEntity();
@@ -59,7 +59,9 @@ public class TeamStatsServiceIT {
         stats.setPoints(18);
         stats.setGoalDifference(5);
 
-        savedStats = teamStatsRepository.save(stats);
+        
+        savedTeam = teamRepository.saveAndFlush(team);
+        savedStats = teamStatsRepository.saveAndFlush(stats);
     }
 
     @Test
